@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intel Matchmaker — Swipe Less. Choose Smarter.</title>
+  <meta name="description" content="Discover your ideal Intel processor between Core Ultra Series 3 and Core Series 3. Educational, deterministic matchmaking based on your workflow.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%237C3AED'/><circle cx='16' cy='16' r='6' fill='%23C4B5FD'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+  <div class="ambient-glow glow-3" aria-hidden="true"></div>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#home" class="brand-logo" aria-label="Intel Matchmaker Home">
+        <svg class="brand-chip-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="2" width="24" height="24" rx="6" stroke="#C4B5FD" stroke-width="2" fill="rgba(124, 58, 237, 0.25)"/>
+          <path d="M7 14H21M14 7V21" stroke="#E9D5FF" stroke-width="1.75" stroke-linecap="round"/>
+          <circle cx="14" cy="14" r="3.5" fill="#7C3AED" stroke="#E9D5FF" stroke-width="1.5"/>
+        </svg>
+        <span class="brand-name">Intel <span class="brand-accent">Matchmaker</span></span>
+      </a>
+
+      <button id="mobile-menu-btn" class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+
+      <nav id="primary-nav" class="nav-links" aria-label="Main Navigation">
+        <a href="#home" class="nav-item active">Home</a>
+        <a href="#quiz-section" class="nav-item">Quiz</a>
+        <a href="#comparison" class="nav-item">Comparison</a>
+        <a href="#how-it-works" class="nav-item">How It Works</a>
+        <a href="#quiz-section" class="btn btn-primary nav-cta" id="nav-cta-btn">Find My Match</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-split-grid">
+          <!-- Left Hero Column: Compelling copy and actions -->
+          <div class="hero-content-col">
+            <div class="hero-badge">
+              <span class="sparkle-icon" aria-hidden="true">✨</span>
+              <span>Processor Awareness &amp; Interactive Discovery</span>
+            </div>
+            <h1 class="hero-title">
+              Swipe Less. <span class="gradient-text">Choose Smarter.</span>
+            </h1>
+            <p class="hero-headline">
+              It's Not About the Best. It's About Your Best Match.
+            </p>
+            <p class="hero-desc">
+              Meet <strong>Chip</strong>, your personal Intel Matchmaker guide! Stop sifting through confusing benchmarks and endless spec sheets. Answer five straightforward questions to discover whether your computing workflow calls for <strong>Intel Core Ultra Series 3</strong> or <strong>Intel Core Series 3</strong>.
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary btn-lg" id="hero-find-match-btn">
+                <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd"/>
+                </svg>
+                Find My Match
+              </button>
+              <a href="#profiles-overview" class="btn btn-glass btn-lg">Explore Both Profiles</a>
+              <a href="#comparison" class="btn btn-outline btn-lg">Compare Processors</a>
+            </div>
+          </div>
+
+          <!-- Right Hero Column: Animated Mascot Chip & Dimensional Signature Heart -->
+          <div class="hero-visual-col" aria-label="Intel Matchmaker interactive mascot and signature compatibility heart">
+            <div class="mascot-heart-stage">
+              <!-- Floating Ambient Micro Sparkles & Hearts -->
+              <div class="floating-particle particle-sparkle-1" aria-hidden="true">✦</div>
+              <div class="floating-particle particle-sparkle-2" aria-hidden="true">✨</div>
+              <div class="floating-particle particle-sparkle-3" aria-hidden="true">✦</div>
+              <div class="floating-particle particle-heart-1" aria-hidden="true">♥</div>
+              <div class="floating-particle particle-heart-2" aria-hidden="true">♥</div>
+
+              <!-- Signature Dimensional 3D Heart -->
+              <div class="signature-heart-wrapper" id="hero-signature-heart">
+                <img src="assets/signature-heart.svg" alt="Glossy dimensional compatibility heart with cyber lavender lighting" class="heart-svg-img" width="260" height="260">
+                <div class="heart-pulse-glow" aria-hidden="true"></div>
+                <!-- Interactive Fit Indicator Badge on Heart -->
+                <div class="heart-fit-pill">
+                  <span class="fit-dot"></span>
+                  <span class="fit-text">100% Fit Driven</span>
+                </div>
+              </div>
+
+              <!-- Animated Mascot Chip -->
+              <div class="mascot-wrapper" id="hero-mascot-chip">
+                <img src="assets/mascot-chip.svg" alt="Chip, the friendly Intel Matchmaker robot mascot waving with mini laptop" class="mascot-svg-img" width="220" height="240">
+                <div class="mascot-speech-bubble" id="mascot-bubble">
+                  <span>"Ready to meet your match?"</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROCESSOR PROFILE CARDS -->
+        <div id="profiles-overview" class="profiles-grid">
+          <!-- Profile A: Core Ultra Series 3 -->
+          <article class="glass-card profile-card" id="card-profile-ultra">
+            <div class="card-chip-tag">Profile A</div>
+            <div class="profile-header">
+              <div class="profile-avatar avatar-ultra">
+                <svg viewBox="0 0 32 32" fill="none" class="chip-svg" aria-hidden="true">
+                  <rect x="3" y="3" width="26" height="26" rx="6" stroke="#C4B5FD" stroke-width="2"/>
+                  <path d="M16 6L22 16L16 26L10 16Z" fill="#7C3AED" stroke="#E9D5FF" stroke-width="1.5"/>
+                  <circle cx="16" cy="16" r="3" fill="#FFF"/>
+                </svg>
+              </div>
+              <div>
+                <h2 class="profile-name">Intel® Core™ Ultra Series 3</h2>
+                <div class="codename-badge">Codename: Panther Lake</div>
+              </div>
+            </div>
+            <div class="personality-banner">
+              <span class="personality-label">Personality</span>
+              <span class="personality-title">The Power Creator</span>
+            </div>
+            <p class="profile-positioning">
+              Built for more demanding creation, gaming, productivity, and intensive AI workloads where headroom and sustained capability take priority.
+            </p>
+            <ul class="profile-highlights">
+              <li>Demanding content creation &amp; 4K video editing</li>
+              <li>Immersive gaming and heavy multitasking</li>
+              <li>Intensive on-device AI acceleration workflows</li>
+              <li>Engineered on advanced Intel 18A process node</li>
+            </ul>
+            <div class="profile-footer">
+              <button class="btn-text explore-btn" data-target="comparison" aria-label="Explore Intel Core Ultra specifications in comparison dashboard">
+                View in Comparison →
+              </button>
+            </div>
+          </article>
+
+          <!-- Profile B: Core Series 3 -->
+          <article class="glass-card profile-card" id="card-profile-core">
+            <div class="card-chip-tag">Profile B</div>
+            <div class="profile-header">
+              <div class="profile-avatar avatar-core">
+                <svg viewBox="0 0 32 32" fill="none" class="chip-svg" aria-hidden="true">
+                  <rect x="3" y="3" width="26" height="26" rx="6" stroke="#93C5FD" stroke-width="2"/>
+                  <circle cx="16" cy="16" r="8" fill="#3B82F6" stroke="#DBEAFE" stroke-width="1.5"/>
+                  <path d="M12 16H20M16 12V20" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <h2 class="profile-name">Intel® Core™ Series 3</h2>
+                <div class="codename-badge codename-core">Codename: Wildcat Lake</div>
+              </div>
+            </div>
+            <div class="personality-banner personality-banner-core">
+              <span class="personality-label">Personality</span>
+              <span class="personality-title">The Everyday Achiever</span>
+            </div>
+            <p class="profile-positioning">
+              Crafted for modern everyday computing, crisp productivity, and right-sized AI capabilities across accessible and budget-friendly laptops.
+            </p>
+            <ul class="profile-highlights">
+              <li>Fluid browsing, documents, studies &amp; video meetings</li>
+              <li>Right-sized AI for intelligent everyday assistant tasks</li>
+              <li>Balanced power efficiency for all-day mobile ease</li>
+              <li>Engineered on advanced Intel 18A process node</li>
+            </ul>
+            <div class="profile-footer">
+              <button class="btn-text explore-btn" data-target="comparison" aria-label="Explore Intel Core Series 3 in comparison dashboard">
+                View in Comparison →
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE QUIZ SECTION -->
+    <section id="quiz-section" class="quiz-section">
+      <div class="container quiz-container">
+        <!-- Quiz Stage / Screen -->
+        <div class="quiz-card glass-card" id="quiz-card">
+          <!-- Quiz Header -->
+          <div class="quiz-card-header">
+            <div class="quiz-step-info">
+              <span class="quiz-kicker">Interactive Matchmaker</span>
+              <h2 class="quiz-heading" id="quiz-progress-text">Question 1 of 5</h2>
+            </div>
+            <div class="quiz-indicator-wrap">
+              <div class="quiz-progress-bar-bg" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" id="quiz-progressbar" aria-label="Quiz progress">
+                <div class="quiz-progress-fill" id="quiz-progress-fill" style="width: 20%;"></div>
+              </div>
+              <span class="quiz-percentage" id="quiz-percentage-text">20%</span>
+            </div>
+          </div>
+
+          <!-- Question Content Container -->
+          <div class="quiz-question-container" id="quiz-question-container">
+            <h3 class="quiz-question-title" id="quiz-question-title">
+              Loading question...
+            </h3>
+            <p class="quiz-question-subtitle" id="quiz-question-subtitle">
+              Choose the response that reflects how you actually work.
+            </p>
+
+            <div class="quiz-options-grid" id="quiz-options-grid" role="radiogroup" aria-labelledby="quiz-question-title">
+              <!-- Options injected dynamically by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Quiz Feedback / Warning -->
+          <div class="quiz-validation-message" id="quiz-validation" aria-live="polite"></div>
+
+          <!-- Quiz Navigation Controls -->
+          <div class="quiz-actions-bar">
+            <button class="btn btn-outline" id="quiz-prev-btn" disabled>
+              <svg viewBox="0 0 20 20" fill="currentColor" class="btn-icon" aria-hidden="true">
+                <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+              </svg>
+              Back
+            </button>
+            <div class="quiz-actions-right">
+              <button class="btn btn-text" id="quiz-reset-btn" title="Reset quiz and start over">
+                Reset
+              </button>
+              <button class="btn btn-primary" id="quiz-next-btn" disabled>
+                Continue
+                <svg viewBox="0 0 20 20" fill="currentColor" class="btn-icon" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MATCH REVEAL SCREEN (initially hidden) -->
+        <div class="result-card glass-card hidden" id="result-card" aria-live="polite">
+          <!-- Background Ambient Particle & Sparkle Layer (Behind Content) -->
+          <div class="result-ambient-particles" aria-hidden="true">
+            <span class="drift-heart dh-1">♥</span>
+            <span class="drift-heart dh-2">♥</span>
+            <span class="drift-heart dh-3">♥</span>
+            <span class="drift-heart dh-4">♥</span>
+            <span class="drift-sparkle ds-1">✦</span>
+            <span class="drift-sparkle ds-2">✨</span>
+            <span class="drift-sparkle ds-3">✦</span>
+            <span class="drift-sparkle ds-4">✨</span>
+          </div>
+
+          <!-- Decorative Corner Mascot Illustrations (Soft Opacity) -->
+          <div class="result-corner-decorations" aria-hidden="true">
+            <div class="corner-mascot corner-mascot-left">
+              <img src="assets/mascot-chip.svg" alt="" width="75" height="85">
+            </div>
+            <div class="corner-mascot corner-mascot-right">
+              <img src="assets/mascot-chip.svg" alt="" width="75" height="85">
+            </div>
+          </div>
+
+          <!-- Celebratory Character & Dimensional Heart Banner -->
+          <div class="result-visual-banner">
+            <div class="result-mascot-celebrate" id="result-mascot-container">
+              <img src="assets/mascot-chip.svg" alt="Chip celebrating match results" class="result-mascot-img" width="135" height="150">
+              <div class="celebrate-reaction-bubble" id="celebrate-bubble">
+                <span>"We found your processor match!"</span>
+              </div>
+            </div>
+
+            <!-- Signature Dimensional Heart Result Badge -->
+            <div class="result-heart-container" id="result-heart-wrapper">
+              <img src="assets/signature-heart.svg" alt="Compatibility Match Heart" class="result-heart-img" width="145" height="145">
+              <div class="result-heart-badge-label" id="result-heart-score-text">
+                <span class="heart-metric-number" id="result-compatibility-pct">10 Pts</span>
+                <span class="heart-metric-caption" id="result-compatibility-caption">Workflow Fit</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-reveal-header">
+            <div class="result-kicker-badge" id="result-badge">Match Found</div>
+            <h2 class="result-main-title" id="result-title">Your Best Processor Match</h2>
+            <p class="result-subtitle" id="result-subtitle">
+              Calculated using our deterministic matchmaking scoring algorithm.
+            </p>
+          </div>
+
+          <div class="result-highlight-box" id="result-box">
+            <div class="result-processor-badge" id="result-chip-name">Intel® Core™ Ultra Series 3</div>
+            <div class="result-codename" id="result-codename">Codename: Panther Lake</div>
+            <div class="result-personality-tag" id="result-personality">The Power Creator</div>
+            <p class="result-summary" id="result-summary">
+              Your workflow leans heavily toward high-throughput creation, multitasking, and AI-accelerated tasks.
+            </p>
+          </div>
+
+          <!-- Points Breakdown -->
+          <div class="result-scores-dashboard">
+            <h3 class="scores-title">Matchmaking Points Breakdown</h3>
+            <p class="scores-subtitle">Points assigned based on your exact questionnaire preferences:</p>
+            <div class="scores-grid">
+              <div class="score-card score-ultra" id="score-card-ultra">
+                <div class="score-card-label">Core™ Ultra Series 3 (Panther Lake)</div>
+                <div class="score-number" id="score-ultra-val">0</div>
+                <div class="score-bar-track">
+                  <div class="score-bar-fill fill-ultra" id="bar-ultra-fill" style="width: 0%;"></div>
+                </div>
+                <span class="score-desc">Matchmaking Points</span>
+              </div>
+              <div class="score-card score-core" id="score-card-core">
+                <div class="score-card-label">Core™ Series 3 (Wildcat Lake)</div>
+                <div class="score-number" id="score-core-val">0</div>
+                <div class="score-bar-track">
+                  <div class="score-bar-fill fill-core" id="bar-core-fill" style="width: 0%;"></div>
+                </div>
+                <span class="score-desc">Matchmaking Points</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key Reasons Influenced by Answers -->
+          <div class="result-reasons-block">
+            <h3 class="reasons-heading">Why This Fits You (Influenced by Your Answers):</h3>
+            <ul class="reasons-list" id="reasons-list">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+          <!-- Alternative Family Consideration -->
+          <div class="alternative-perspective-card" id="alternative-box">
+            <h4 class="alt-heading" id="alt-title">Alternative Consideration</h4>
+            <p class="alt-desc" id="alt-desc">
+              How the alternative processor family might still fit your needs under different usage conditions.
+            </p>
+          </div>
+
+          <p class="result-disclaimer-note">
+            <em>Note:</em> Matchmaking points reflect workflow alignment, not hardware benchmark performance or raw compute clock-speeds.
+          </p>
+
+          <!-- Result Actions -->
+          <div class="result-actions-row">
+            <a href="#comparison" class="btn btn-primary" id="result-compare-btn">Compare Both Families</a>
+            <button class="btn btn-glass" id="result-share-btn">
+              <svg viewBox="0 0 20 20" fill="currentColor" class="btn-icon" aria-hidden="true">
+                <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"/>
+              </svg>
+              Share My Match
+            </button>
+            <button class="btn btn-outline" id="result-retake-btn">Retake Quiz</button>
+            <a href="#home" class="btn btn-text">Back to Home</a>
+          </div>
+
+          <!-- Notification toast for share / copy actions -->
+          <div class="toast-notification" id="share-toast" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON DASHBOARD -->
+    <section id="comparison" class="comparison-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="hero-badge">Side-by-Side Guide</div>
+          <h2 class="section-title">Processor Family Comparison</h2>
+          <p class="section-subtitle">
+            Grounded in the official competition brief. Both processor families are built on the state-of-the-art Intel 18A node, yet tailored for distinct computing experiences.
+          </p>
+        </div>
+
+        <!-- Shared Foundation Spotlight -->
+        <div class="shared-foundation-card glass-card">
+          <div class="shared-badge">
+            <svg viewBox="0 0 20 20" fill="currentColor" class="icon-inline" aria-hidden="true">
+              <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+            </svg>
+            Shared Architectural Foundation
+          </div>
+          <h3 class="shared-title">Powered by Intel 18A Process Technology</h3>
+          <p class="shared-desc">
+            Both Intel Core Ultra Series 3 and Intel Core Series 3 share the breakthrough <strong>Intel 18A manufacturing technology</strong>. You receive next-generation semiconductor fabrication, RibbonFET gate-all-around transistors, and PowerVia backside power delivery regardless of the family you choose.
+          </p>
+        </div>
+
+        <!-- Comparison Table / Layout -->
+        <div class="comparison-grid">
+          <!-- Column 1: Core Ultra Series 3 -->
+          <div class="glass-card comp-col comp-col-ultra">
+            <div class="comp-col-header">
+              <span class="comp-col-tag">Flagship Performance</span>
+              <h3 class="comp-title">Intel® Core™ Ultra Series 3</h3>
+              <div class="comp-codename">Panther Lake</div>
+              <div class="comp-personality">The Power Creator</div>
+            </div>
+
+            <div class="comp-feature-group">
+              <h4 class="comp-group-title">Primary Positioning</h4>
+              <p class="comp-text">More demanding creation, gaming, productivity, and intensive AI workloads where maximum capability and headroom are required.</p>
+            </div>
+
+            <div class="comp-feature-group">
+              <h4 class="comp-group-title">Ideal Target Audience</h4>
+              <ul class="comp-list">
+                <li>Video editors, 3D artists, and content creators</li>
+                <li>Enthusiast mobile gamers requiring smooth frame rates</li>
+                <li>Power professionals running heavy multitasking and code compiles</li>
+                <li>Users actively running local AI models and generation</li>
+              </ul>
+            </div>
+
+            <div class="comp-feature-group">
+              <h4 class="comp-group-title">AI Workload Focus</h4>
+              <p class="comp-text">Demanding on-device AI acceleration, multi-stream inferencing, and advanced creative AI plugins.</p>
+            </div>
+
+            <div class="comp-feature-group">
+              <h4 class="comp-group-title">Laptop Category</h4>
+              <p class="comp-text">High-performance thin-and-light laptops, enthusiast creative workstations, and gaming portables.</p>
+            </div>
+
+            <div class="comp-action">
+              <a href="#quiz-section" class="btn btn-primary btn-block comp-quiz-trigger">Take Matchmaker Quiz</a>
+            </div>
+          </div>
+
+          <!-- Column 2: Core Series 3 -->
+          <div class="glass-card comp-col comp-col-core">
+            <div class="comp-col-header">
+              <span class="comp-col-tag comp-tag-core">Smart Everyday Value</span>
+              <h3 class="comp-title">Intel® Core™ Series 3</h3>
+              <div class="comp-codename codename-core">Wildcat Lake</div>
+              <div class="comp-personality">The Everyday Achiever</div>
+            </div>
+
+            <div class="comp-feature-group">
+              <h4 class="comp-group-title">Primary Positioning</h4>
+              <p class="comp-text">Modern everyday computing and right-sized AI capabilities engineered for more price-sensitive, accessible laptops.</p>
+            </div>
+
+            <div class="comp-feature-group">
+              <h4 class="comp-group-title">Ideal Target Audience</h4>
+              <ul class="comp-list">
+                <li>Students, educators, and academic researchers</li>
+                <li>Hybrid work professionals managing docs, spreadsheets, and video calls</li>
+                <li>Streamers, casual gamers, and media consumers</li>
+                <li>Value-focused buyers wanting modern technology without a premium markup</li>
+              </ul>
+            </div>
+
+            <div class="comp-feature-group">
+              <h4 class="comp-group-title">AI Workload Focus</h4>
+              <p class="comp-text">Right-sized AI for intelligent everyday assistant tasks, camera background effects, and audio noise reduction.</p>
+            </div>
+
+            <div class="comp-feature-group">
+              <h4 class="comp-group-title">Laptop Category</h4>
+              <p class="comp-text">Mainstream laptops, all-day ultraportables, and accessible family or educational notebooks.</p>
+            </div>
+
+            <div class="comp-action">
+              <a href="#quiz-section" class="btn btn-outline btn-block comp-quiz-trigger">Take Matchmaker Quiz</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Essential Questions Answered -->
+        <div class="faq-answers-block glass-card">
+          <h3 class="faq-section-title">The Three Big Questions, Answered</h3>
+          <div class="faq-grid">
+            <div class="faq-card">
+              <div class="faq-num">1</div>
+              <h4 class="faq-q">What do the two processor families have in common?</h4>
+              <p class="faq-a">
+                Both processor families share Intel's cutting-edge <strong>Intel 18A process node</strong>. Both incorporate integrated AI acceleration and modern architecture, guaranteeing advanced energy management and modern computing standards across the board.
+              </p>
+            </div>
+
+            <div class="faq-card">
+              <div class="faq-num">2</div>
+              <h4 class="faq-q">What are their main differences?</h4>
+              <p class="faq-a">
+                <strong>Intel Core Ultra Series 3 (Panther Lake)</strong> scales for intensive creative workflows, high-end gaming, and heavy local AI demands. <strong>Intel Core Series 3 (Wildcat Lake)</strong> optimizes for everyday tasks, battery-friendly productivity, and right-sized AI in accessible price tiers.
+              </p>
+            </div>
+
+            <div class="faq-card">
+              <div class="faq-num">3</div>
+              <h4 class="faq-q">Which processor family suits your needs and why?</h4>
+              <p class="faq-a">
+                It hinges entirely on your daily demands. If you edit high-resolution media or push demanding AI workloads, Core Ultra delivers the headroom you need. If your daily rhythm revolves around documents, web browsing, studies, and meetings, Core Series 3 offers superior balance without paying for unused power.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS & DISCLAIMER SECTION -->
+    <section id="how-it-works" class="how-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="hero-badge">Transparent Methodology</div>
+          <h2 class="section-title">How Intel Matchmaker Works</h2>
+          <p class="section-subtitle">
+            Understand how our deterministic algorithm translates your real habits into an explainable recommendation.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="glass-card step-card">
+            <div class="step-badge">Step 1</div>
+            <h3 class="step-title">5 Targeted Questions</h3>
+            <p class="step-text">
+              We evaluate your workflow archetype, intensity of daily tasks, local AI importance, purchasing priority, and typical day routine.
+            </p>
+          </div>
+          <div class="glass-card step-card">
+            <div class="step-badge">Step 2</div>
+            <h3 class="step-title">Deterministic Scoring</h3>
+            <p class="step-text">
+              Points are allocated to Core Ultra and Core Series 3 according to strict competition rules. No hidden black-box AI or random weighting.
+            </p>
+          </div>
+          <div class="glass-card step-card">
+            <div class="step-badge">Step 3</div>
+            <h3 class="step-title">Explainable Match</h3>
+            <p class="step-text">
+              We deliver your customized result with transparent point totals, a clear rationale, and an honest look at the alternative processor.
+            </p>
+          </div>
+        </div>
+
+        <!-- Mandatory Official Educational Disclaimer -->
+        <div class="disclaimer-banner glass-card" role="note">
+          <div class="disclaimer-header">
+            <svg viewBox="0 0 20 20" fill="currentColor" class="disclaimer-icon" aria-hidden="true">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+            </svg>
+            <h3 class="disclaimer-title">Educational Concept &amp; Testing Disclaimer</h3>
+          </div>
+          <blockquote class="disclaimer-quote">
+            “Intel Matchmaker is an independent educational concept. Recommendations are based on stated preferences, not official Intel benchmarks or personalised technical testing. Actual laptop performance depends on the device configuration and workload.”
+          </blockquote>
+          <p class="disclaimer-citation">
+            Product positioning, architecture references (Intel 18A), and codenames (Panther Lake &amp; Wildcat Lake) are referenced from the official Intel Processor Awareness and Creative Design Competition Brief. All trademarks are the property of Intel Corporation. No official commercial endorsement is implied.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <span class="brand-name">Intel <span class="brand-accent">Matchmaker</span></span>
+        <p class="footer-tagline">Swipe Less. Choose Smarter. • It's Not About the Best. It's About Your Best Match.</p>
+      </div>
+      <div class="footer-nav">
+        <a href="#home">Home</a>
+        <a href="#quiz-section">Quiz</a>
+        <a href="#comparison">Comparison</a>
+        <a href="#how-it-works">How It Works</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 Intel Matchmaker Concept. Created for the Intel Processor Awareness and Creative Design Competition.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

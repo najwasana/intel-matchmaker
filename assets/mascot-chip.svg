@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 380" width="100%" height="100%">
+  <defs>
+    <!-- Soft lavender shadow -->
+    <filter id="chip-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#4C1D95" flood-opacity="0.35"/>
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#7C3AED" flood-opacity="0.25"/>
+    </filter>
+
+    <!-- Character Body - Pastel Lavender & Pale Lilac porcelain gradient -->
+    <linearGradient id="chip-body-grad" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="40%" stop-color="#F5F3FF"/>
+      <stop offset="80%" stop-color="#E9E1FF"/>
+      <stop offset="100%" stop-color="#DDD6FE"/>
+    </linearGradient>
+
+    <!-- Deep visor gradient matching reference #17142B and #34245C -->
+    <linearGradient id="chip-visor-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1B4B"/>
+      <stop offset="60%" stop-color="#2E1065"/>
+      <stop offset="100%" stop-color="#34245C"/>
+    </linearGradient>
+
+    <!-- Cyber Cyan Glowing Eye gradient matching reference 2 inner heart glow -->
+    <linearGradient id="cyan-glow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A5F3FC"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+
+    <!-- Accent violet / purple -->
+    <linearGradient id="chip-violet-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C4B5FD"/>
+      <stop offset="50%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#4C1D95"/>
+    </linearGradient>
+
+    <!-- Accent Pink -->
+    <linearGradient id="chip-pink-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBCFE8"/>
+      <stop offset="100%" stop-color="#F472B6"/>
+    </linearGradient>
+
+    <!-- Foliage / Flora botanical elements matching Pinterest reference -->
+    <linearGradient id="botanical-leaf-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#6D28D9"/>
+    </linearGradient>
+    <linearGradient id="botanical-leaf-pink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F472B6"/>
+      <stop offset="100%" stop-color="#DB2777"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Botanical foliage backdrop spray inspired by Pinterest reference -->
+  <g class="botanical-spray" opacity="0.85">
+    <!-- Back Purple Leaf Left -->
+    <path d="M 90,140 C 40,110 30,50 65,30 C 95,30 115,80 90,140 Z" fill="url(#botanical-leaf-purple)"/>
+    <path d="M 68,40 Q 80,85 88,130" stroke="#DDD6FE" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- Pink Leaflet Upper Right -->
+    <path d="M 245,130 C 290,100 305,45 275,25 C 245,25 225,75 245,130 Z" fill="url(#botanical-leaf-pink)"/>
+    <path d="M 270,35 Q 260,80 248,125" stroke="#FCE7F3" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- Small Accent Leaves -->
+    <path d="M 115,65 C 90,40 100,10 120,15 C 135,25 130,50 115,65 Z" fill="#C4B5FD" opacity="0.9"/>
+    <path d="M 225,65 C 250,40 240,10 220,15 C 205,25 210,50 225,65 Z" fill="#F472B6" opacity="0.9"/>
+  </g>
+
+  <!-- Mascot Body Group with Soft Shadow -->
+  <g filter="url(#chip-shadow)" class="mascot-full-model">
+    <!-- Antenna Transmitter -->
+    <g class="chip-antenna">
+      <path d="M 170,78 V 38" stroke="#A78BFA" stroke-width="4.5" stroke-linecap="round"/>
+      <circle cx="170" cy="34" r="9" fill="url(#chip-violet-grad)"/>
+      <circle cx="170" cy="34" r="4" fill="#38BDF8"/>
+      <!-- Radiating signal waves -->
+      <path d="M 152,24 A 20,20 0 0 1 188,24" stroke="#F472B6" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.75"/>
+      <path d="M 144,16 A 28,28 0 0 1 196,16" stroke="#C4B5FD" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
+    </g>
+
+    <!-- Rounded Ear Audio Sensors -->
+    <rect x="54" y="122" width="20" height="42" rx="10" fill="url(#chip-violet-grad)"/>
+    <circle cx="64" cy="143" r="6" fill="#38BDF8"/>
+    <rect x="266" y="122" width="20" height="42" rx="10" fill="url(#chip-violet-grad)"/>
+    <circle cx="276" cy="143" r="6" fill="#38BDF8"/>
+
+    <!-- Main Chassis Body -->
+    <rect x="68" y="74" width="204" height="215" rx="98" fill="url(#chip-body-grad)"/>
+    <!-- Specular rim highlight on ceramic chassis -->
+    <path d="M 90,110 C 98,82 132,78 170,78 C 208,78 242,82 250,110" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.85"/>
+
+    <!-- Screen Visor -->
+    <rect x="94" y="112" width="152" height="94" rx="42" fill="url(#chip-visor-grad)"/>
+    <!-- Visor glass specular reflection -->
+    <path d="M 106,126 C 130,120 170,120 208,128 C 218,130 224,136 216,138 C 178,130 140,130 106,136 C 98,137 98,128 106,126 Z" fill="#FFFFFF" opacity="0.25"/>
+
+    <!-- Expressive Cyber-Cyan Eyes (Happy animated glow) -->
+    <!-- Left Eye -->
+    <g class="chip-eye-left">
+      <ellipse cx="140" cy="158" rx="13" ry="17" fill="url(#cyan-glow-grad)"/>
+      <ellipse cx="144" cy="153" rx="5" ry="7" fill="#FFFFFF"/>
+      <circle cx="134" cy="164" r="2.5" fill="#FFFFFF"/>
+    </g>
+    <!-- Right Eye -->
+    <g class="chip-eye-right">
+      <ellipse cx="200" cy="158" rx="13" ry="17" fill="url(#cyan-glow-grad)"/>
+      <ellipse cx="204" cy="153" rx="5" ry="7" fill="#FFFFFF"/>
+      <circle cx="194" cy="164" r="2.5" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Blushing Pink Cheeks -->
+    <ellipse cx="118" cy="176" rx="11" ry="6" fill="url(#chip-pink-grad)" opacity="0.75"/>
+    <ellipse cx="222" cy="176" rx="11" ry="6" fill="url(#chip-pink-grad)" opacity="0.75"/>
+
+    <!-- Friendly Digital Smile -->
+    <path d="M 160,172 Q 170,182 180,172" stroke="#38BDF8" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+
+    <!-- Chest Processor Badge (Intel 18A Node) -->
+    <g class="chip-chest-badge">
+      <rect x="144" y="226" width="52" height="38" rx="10" fill="url(#chip-violet-grad)"/>
+      <rect x="148" y="230" width="44" height="30" rx="7" fill="#17142B"/>
+      <!-- Glowing Inner Heart Logo inside Chest Badge -->
+      <path d="M 170,250 C 164,244 156,238 156,233 C 156,230 159,228 162,228 C 165,228 168,229 170,231 C 172,229 175,228 178,228 C 181,228 184,230 184,233 C 184,238 176,244 170,250 Z" fill="#F472B6"/>
+      <text x="170" y="255" font-family="'JetBrains Mono', monospace" font-size="6.5" fill="#C4B5FD" text-anchor="middle" font-weight="bold">18A</text>
+    </g>
+
+    <!-- Left Waving Arm (Welcoming pose) -->
+    <g class="chip-waving-arm">
+      <path d="M 74,206 Q 40,185 36,148 Q 35,136 48,134 Q 60,133 68,154 L 78,194" fill="url(#chip-body-grad)"/>
+      <circle cx="42" cy="140" r="14" fill="url(#chip-body-grad)"/>
+      <circle cx="42" cy="140" r="5" fill="#C084FC" opacity="0.5"/>
+    </g>
+
+    <!-- Right Arm holding Mini Laptop -->
+    <g class="chip-laptop-arm">
+      <path d="M 264,206 Q 284,222 270,250 L 246,250" stroke="url(#chip-body-grad)" stroke-width="18" stroke-linecap="round" fill="none"/>
+      <!-- Mini Laptop -->
+      <g transform="translate(242, 224) rotate(-12)">
+        <rect x="0" y="0" width="34" height="24" rx="4" fill="#34245C" stroke="#A78BFA" stroke-width="1.5"/>
+        <rect x="4" y="4" width="26" height="16" rx="2" fill="#7C3AED"/>
+        <path d="M 17,9 L 21,12 L 17,15 L 13,12 Z" fill="#38BDF8"/>
+        <polygon points="-4,24 38,24 32,32 2,32" fill="#CBD5E1"/>
+      </g>
+    </g>
+
+    <!-- Hover Propulsion Pods -->
+    <ellipse cx="125" cy="290" rx="18" ry="12" fill="url(#chip-violet-grad)"/>
+    <ellipse cx="125" cy="293" rx="10" ry="5" fill="#38BDF8" opacity="0.85"/>
+    <ellipse cx="215" cy="290" rx="18" ry="12" fill="url(#chip-violet-grad)"/>
+    <ellipse cx="215" cy="293" rx="10" ry="5" fill="#38BDF8" opacity="0.85"/>
+  </g>
+</svg>
