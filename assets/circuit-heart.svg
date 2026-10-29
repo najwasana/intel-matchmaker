@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 550" class="circuit-heart-svg" aria-label="Futuristic Cyberpunk Circuit Heart">
+  <defs>
+    <!-- Deep outer glow filter -->
+    <filter id="circuit-glow-strong" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur1" />
+      <feGaussianBlur stdDeviation="16" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Circuit trace line gradients -->
+    <linearGradient id="trace-cyan-violet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#C084FC" />
+      <stop offset="100%" stop-color="#F472B6" />
+    </linearGradient>
+
+    <radialGradient id="center-core-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#7C3AED" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#121020" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient background core light -->
+  <ellipse cx="300" cy="250" rx="180" ry="160" fill="url(#center-core-glow)" class="heart-ambient-glow" />
+
+  <!-- Background Dim Circuit Grid Mesh -->
+  <g class="circuit-grid-mesh" opacity="0.18" stroke="#7C3AED" stroke-width="1">
+    <line x1="100" y1="50" x2="100" y2="450" stroke-dasharray="4,8" />
+    <line x1="200" y1="50" x2="200" y2="450" stroke-dasharray="4,8" />
+    <line x1="300" y1="30" x2="300" y2="480" stroke-dasharray="4,8" />
+    <line x1="400" y1="50" x2="400" y2="450" stroke-dasharray="4,8" />
+    <line x1="500" y1="50" x2="500" y2="450" stroke-dasharray="4,8" />
+    <line x1="50" y1="150" x2="550" y2="150" stroke-dasharray="4,8" />
+    <line x1="50" y1="250" x2="550" y2="250" stroke-dasharray="4,8" />
+    <line x1="50" y1="350" x2="550" y2="350" stroke-dasharray="4,8" />
+  </g>
+
+  <!-- Outer Circuit Pathway Frame (Heart Outline formed by circuit segments) -->
+  <g class="heart-traces-base" stroke="rgba(196, 181, 253, 0.3)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left outer lobe pathways -->
+    <path d="M 300,140 L 260,90 L 190,90 L 140,140 L 140,220 L 220,300 L 300,380" />
+    <path d="M 300,170 L 270,130 L 210,130 L 170,170 L 170,230 L 240,300 L 300,360" />
+    <path d="M 230,90 L 230,50 L 160,50 L 110,100 L 110,230 L 200,330 L 300,430" />
+    
+    <!-- Right outer lobe pathways -->
+    <path d="M 300,140 L 340,90 L 410,90 L 460,140 L 460,220 L 380,300 L 300,380" />
+    <path d="M 300,170 L 330,130 L 390,130 L 430,170 L 430,230 L 360,300 L 300,360" />
+    <path d="M 370,90 L 370,50 L 440,50 L 490,100 L 490,230 L 400,330 L 300,430" />
+
+    <!-- Horizontal and diagonal interconnect buses -->
+    <path d="M 140,180 L 170,180" />
+    <path d="M 460,180 L 430,180" />
+    <path d="M 190,90 L 210,130" />
+    <path d="M 410,90 L 390,130" />
+    <path d="M 220,300 L 240,300" />
+    <path d="M 380,300 L 360,300" />
+    <path d="M 260,220 L 300,220 L 340,220" />
+    <path d="M 300,220 L 300,280" />
+  </g>
+
+  <!-- Illuminated Glowing Circuit Traces (Animated Pulse Paths) -->
+  <g class="heart-traces-active" stroke="url(#trace-cyan-violet)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#circuit-glow-strong)">
+    <!-- Circuit Stream 1: Top Center into Left Chamber down to Apex -->
+    <path class="pulse-path path-1" d="M 300,90 L 250,90 L 180,90 L 130,140 L 130,230 L 220,320 L 300,410" />
+    <!-- Circuit Stream 2: Top Center into Right Chamber down to Apex -->
+    <path class="pulse-path path-2" d="M 300,90 L 350,90 L 420,90 L 470,140 L 470,230 L 380,320 L 300,410" />
+    <!-- Inner Core Loop Circuit -->
+    <path class="pulse-path path-3" d="M 300,170 L 250,170 L 210,210 L 250,260 L 300,310 L 350,260 L 390,210 L 350,170 Z" />
+    <!-- Micro Branch 1 -->
+    <path class="pulse-path path-4" d="M 180,90 L 180,140 L 220,180 L 220,240" />
+    <!-- Micro Branch 2 -->
+    <path class="pulse-path path-5" d="M 420,90 L 420,140 L 380,180 L 380,240" />
+    <!-- Vertical Arteries -->
+    <path class="pulse-path path-6" d="M 300,50 L 300,140" />
+    <path class="pulse-path path-7" d="M 300,310 L 300,450" />
+  </g>
+
+  <!-- Central Micro-Processor Die / Cyber Diamond Heart Core -->
+  <g class="heart-central-die" transform="translate(300, 230)">
+    <!-- Outer Die Bracket -->
+    <rect x="-45" y="-45" width="90" height="90" rx="14" fill="#17142B" stroke="#38BDF8" stroke-width="2.5" transform="rotate(45)" filter="url(#circuit-glow-strong)" />
+    <!-- Inner Silicon Wafer Pattern -->
+    <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#2E1065" stroke="#C084FC" stroke-width="1.5" transform="rotate(45)" />
+    <!-- Center Glowing Intel 18A Core Node -->
+    <circle cx="0" cy="0" r="16" fill="#38BDF8" class="die-center-orb" filter="url(#circuit-glow-strong)" />
+    <circle cx="0" cy="0" r="8" fill="#FFFFFF" />
+    <!-- Tiny Circuit Connectors branching outward -->
+    <line x1="-35" y1="0" x2="-55" y2="0" stroke="#38BDF8" stroke-width="2" />
+    <line x1="35" y1="0" x2="55" y2="0" stroke="#38BDF8" stroke-width="2" />
+    <line x1="0" y1="-35" x2="0" y2="-55" stroke="#F472B6" stroke-width="2" />
+    <line x1="0" y1="35" x2="0" y2="55" stroke="#F472B6" stroke-width="2" />
+  </g>
+
+  <!-- Circuit Nodes / Solder Points (Glowing Orbs) -->
+  <g class="circuit-nodes" fill="#FFFFFF">
+    <!-- Left Nodes -->
+    <circle cx="130" cy="140" r="4.5" fill="#38BDF8" filter="url(#circuit-glow-strong)" class="node-glow" />
+    <circle cx="130" cy="230" r="4.5" fill="#C084FC" filter="url(#circuit-glow-strong)" class="node-glow" />
+    <circle cx="180" cy="90" r="5" fill="#FFFFFF" class="node-glow" />
+    <circle cx="220" cy="320" r="4.5" fill="#38BDF8" class="node-glow" />
+    <circle cx="210" cy="210" r="4" fill="#F472B6" class="node-glow" />
+    <!-- Right Nodes -->
+    <circle cx="470" cy="140" r="4.5" fill="#38BDF8" filter="url(#circuit-glow-strong)" class="node-glow" />
+    <circle cx="470" cy="230" r="4.5" fill="#C084FC" filter="url(#circuit-glow-strong)" class="node-glow" />
+    <circle cx="420" cy="90" r="5" fill="#FFFFFF" class="node-glow" />
+    <circle cx="380" cy="320" r="4.5" fill="#38BDF8" class="node-glow" />
+    <circle cx="390" cy="210" r="4" fill="#F472B6" class="node-glow" />
+    <!-- Apex Node -->
+    <circle cx="300" cy="410" r="6" fill="#38BDF8" filter="url(#circuit-glow-strong)" class="node-glow-apex" />
+    <!-- Top Center Nodes -->
+    <circle cx="300" cy="50" r="5" fill="#F472B6" class="node-glow" />
+    <circle cx="300" cy="90" r="4.5" fill="#C084FC" class="node-glow" />
+    <circle cx="300" cy="140" r="5" fill="#38BDF8" class="node-glow" />
+  </g>
+
+  <!-- Traveling Energy Sparks (rendered along key points) -->
+  <circle cx="0" cy="0" r="4" fill="#FFFFFF" class="traveling-spark spark-1">
+    <animateMotion path="M 300,90 L 250,90 L 180,90 L 130,140 L 130,230 L 220,320 L 300,410" dur="2.4s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="0" cy="0" r="4" fill="#FFFFFF" class="traveling-spark spark-2">
+    <animateMotion path="M 300,90 L 350,90 L 420,90 L 470,140 L 470,230 L 380,320 L 300,410" dur="2.4s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="0" cy="0" r="3.5" fill="#38BDF8" class="traveling-spark spark-3">
+    <animateMotion path="M 300,170 L 250,170 L 210,210 L 250,260 L 300,310 L 350,260 L 390,210 L 350,170 Z" dur="3.2s" repeatCount="indefinite" />
+  </circle>
+</svg>

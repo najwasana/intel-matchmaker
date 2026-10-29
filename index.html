@@ -49,6 +49,62 @@
   </header>
 
   <main id="main-content">
+
+    <!-- ═══════════════════════════════════════════════════
+         SCENE 1 — CIRCUIT HEART CINEMATIC INTRO
+    ══════════════════════════════════════════════════════ -->
+    <section id="scene-intro" class="scene-intro-section" aria-label="Opening cinematic">
+      <div class="scene-intro-bg" aria-hidden="true">
+        <!-- Animated circuit-heart SVG -->
+        <div class="circuit-heart-wrap">
+          <img src="assets/circuit-heart.svg" class="circuit-heart-visual" alt="" width="500" height="460" loading="eager">
+          <!-- Orbiting glow rings -->
+          <div class="orbit-ring orbit-ring-1" aria-hidden="true"></div>
+          <div class="orbit-ring orbit-ring-2" aria-hidden="true"></div>
+        </div>
+        <!-- Floating data-stream particles -->
+        <div class="stream-particles" aria-hidden="true">
+          <span class="s-particle sp-1"></span>
+          <span class="s-particle sp-2"></span>
+          <span class="s-particle sp-3"></span>
+          <span class="s-particle sp-4"></span>
+          <span class="s-particle sp-5"></span>
+          <span class="s-particle sp-6"></span>
+        </div>
+      </div>
+
+      <div class="scene-intro-content" aria-live="polite">
+        <div class="scene-chip-label scene-text-reveal" data-delay="0.1">
+          <span class="chip-dot"></span>
+          The Heartbeat of Possibility
+        </div>
+        <p class="scene-intro-line scene-text-reveal" data-delay="0.35">
+          Every big idea starts somewhere.
+        </p>
+        <p class="scene-intro-sub scene-text-reveal" data-delay="0.8">
+          Sometimes, it starts with a spark.
+        </p>
+        <p class="scene-intro-tagline scene-text-reveal" data-delay="1.25">
+          What could yours become?
+        </p>
+        <div class="scene-intro-actions scene-text-reveal" data-delay="1.65">
+          <a href="#scene-possibilities" class="btn btn-primary btn-lg scene-cta">
+            <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd"/>
+            </svg>
+            Explore What's Possible
+          </a>
+          <a href="#quiz-section" class="btn btn-glass btn-lg">Jump to Quiz</a>
+        </div>
+        <div class="scene-scroll-hint scene-text-reveal" data-delay="2.1" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+          Scroll into the story
+        </div>
+      </div>
+    </section>
+
     <!-- HERO SECTION -->
     <section id="home" class="hero-section">
       <div class="container hero-container">
@@ -190,11 +246,97 @@
       </div>
     </section>
 
+    <!-- ═══════════════════════════════════════════════════
+         SCENE 4 — WHAT TECHNOLOGY MAKES POSSIBLE
+    ══════════════════════════════════════════════════════ -->
+    <section id="scene-possibilities" class="scene-possibilities-section" aria-label="What technology makes possible">
+      <div class="possibilities-layout">
+        <!-- Visual column: processor circuits branching to 4 human moments -->
+        <div class="possibilities-visual-col" aria-hidden="true">
+          <div class="poss-visual-wrap">
+            <img src="assets/processor-possibilities.svg" class="poss-svg-img" alt="Processor architecture branching into creative, learning, gaming, and achievement moments" width="480" height="420" loading="lazy">
+            
+            <!-- Connected Moments of Real Human Life -->
+            <div class="poss-float-badge pf-1" title="A creator bringing an ambitious idea to life">
+              <span class="badge-icon">🎨</span>
+              <div class="badge-text-group">
+                <span class="badge-label">Creator</span>
+                <span class="badge-sub">Bringing bold ideas to life</span>
+              </div>
+            </div>
+            
+            <div class="poss-float-badge pf-2" title="A student discovering or mastering something difficult">
+              <span class="badge-icon">💡</span>
+              <div class="badge-text-group">
+                <span class="badge-label">Student</span>
+                <span class="badge-sub">Mastering breakthroughs</span>
+              </div>
+            </div>
+            
+            <div class="poss-float-badge pf-3" title="A gamer immersed in a world they love">
+              <span class="badge-icon">🎮</span>
+              <div class="badge-text-group">
+                <span class="badge-label">Gamer</span>
+                <span class="badge-sub">Immersed in epic worlds</span>
+              </div>
+            </div>
+            
+            <div class="poss-float-badge pf-4" title="Someone building, designing, or solving meaningful challenges">
+              <span class="badge-icon">⚡</span>
+              <div class="badge-text-group">
+                <span class="badge-label">Builder</span>
+                <span class="badge-sub">Solving what matters</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text column: Emotional Storytelling Progression -->
+        <div class="possibilities-text-col">
+          <div class="poss-kicker scene-text-reveal" data-delay="0.1">
+            <span class="chip-dot chip-dot-pink"></span>
+            What Technology Makes Possible
+          </div>
+          <p class="poss-line poss-line-lg scene-text-reveal" data-delay="0.3">
+            The most powerful things technology makes possible…
+          </p>
+          <p class="poss-line scene-text-reveal" data-delay="0.7">
+            …aren't just things you see on a screen.
+          </p>
+          <p class="poss-line scene-text-reveal" data-delay="1.1">
+            They're the things you create, discover and bring to life.
+          </p>
+          <p class="poss-line poss-line-accent scene-text-reveal" data-delay="1.5">
+            Your ideas. Your world. Your next big thing.
+          </p>
+          
+          <!-- Transition to the Quiz Bridge -->
+          <div class="poss-quiz-bridge scene-text-reveal" data-delay="1.8">
+            <p class="bridge-lead">Everyone's next big thing looks different.</p>
+            <p class="bridge-sub">Let's find the Intel processor match that fits <strong>YOUR</strong> world.</p>
+            <a href="#quiz-section" class="btn btn-primary btn-lg bridge-cta">
+              <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd"/>
+              </svg>
+              Start My Matchmaker Quiz
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- INTERACTIVE QUIZ SECTION -->
     <section id="quiz-section" class="quiz-section">
       <div class="container quiz-container">
         <!-- Quiz Stage / Screen -->
         <div class="quiz-card glass-card" id="quiz-card">
+          <!-- Floating swipe hint on mobile/desktop -->
+          <div class="quiz-swipe-hint" aria-hidden="true">
+            <span class="swipe-arrow">←</span>
+            <span class="swipe-hint-text">Swipe card or tap to pick & advance</span>
+            <span class="swipe-arrow">→</span>
+          </div>
+
           <!-- Quiz Header -->
           <div class="quiz-card-header">
             <div class="quiz-step-info">
@@ -583,5 +725,45 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- Scene text reveal observer + swipe hint init -->
+  <script>
+    (function() {
+      'use strict';
+
+      // ── Intersection Observer for .scene-text-reveal elements ──
+      if ('IntersectionObserver' in window) {
+        var revealObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var el = entry.target;
+              var delay = parseFloat(el.dataset.delay || 0) * 1000;
+              setTimeout(function() { el.classList.add('revealed'); }, delay);
+              revealObserver.unobserve(el);
+            }
+          });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.scene-text-reveal').forEach(function(el) {
+          revealObserver.observe(el);
+        });
+      } else {
+        // Fallback: reveal immediately if IntersectionObserver not supported
+        document.querySelectorAll('.scene-text-reveal').forEach(function(el) {
+          el.classList.add('revealed');
+        });
+      }
+
+      // ── Smooth-scroll "Enter Your Universe" and scene CTAs ──
+      document.querySelectorAll('.scene-cta, .bridge-cta, .scene-intro-section a[href^="#"], .scene-possibilities-section a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          var target = document.querySelector(link.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

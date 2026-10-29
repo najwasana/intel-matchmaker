@@ -385,11 +385,16 @@ if (typeof document !== 'undefined') {
     const totalQuestions = QUIZ_QUESTIONS.length;
     const progressPercent = Math.round(((qIndex + 1) / totalQuestions) * 100);
 
-    // Update Header
-    quizProgressText.textContent = `Question ${qIndex + 1} of ${totalQuestions}`;
+    // Update Header with clear uppercase kicker & number styling
+    quizProgressText.textContent = `QUESTION ${qIndex + 1} OF ${totalQuestions}`;
     quizProgressBar.setAttribute('aria-valuenow', progressPercent);
     quizProgressFill.style.width = `${progressPercent}%`;
     quizPercentageText.textContent = `${progressPercent}%`;
+
+    // Trigger card entrance animation (scale 0.94 -> 1, fade, move upward)
+    quizCard.classList.remove('card-entering');
+    void quizCard.offsetWidth; // Force DOM reflow
+    quizCard.classList.add('card-entering');
 
     // Update Question titles
     quizQuestionTitle.textContent = question.title;
@@ -401,7 +406,7 @@ if (typeof document !== 'undefined') {
 
     const currentSelectedOption = AppState.userAnswers[question.id];
 
-    // Render Options
+    // Render Options as interactive swipe/drag-capable answer cards
     question.options.forEach((opt, idx) => {
       const isSelected = currentSelectedOption === opt.id;
 
@@ -420,20 +425,32 @@ if (typeof document !== 'undefined') {
           <div class="option-title">${opt.title}</div>
           <div class="option-desc">${opt.desc}</div>
         </div>
+        <div class="option-swipe-cue" aria-hidden="true">
+          <span class="cue-icon">⇄</span>
+          <span class="cue-text">Swipe</span>
+        </div>
       `;
 
-      // Click handler
-      card.addEventListener('click', () => {
+      // ── Tap / Click Handler ──
+      card.addEventListener('click', (e) => {
+        // Ignore if user just finished a drag gesture
+        if (card.dataset.dragged === 'true') {
+          delete card.dataset.dragged;
+          return;
+        }
         selectOption(question.id, opt.id);
       });
 
-      // Keyboard handler (Enter / Space)
+      // ── Keyboard accessibility (Enter / Space) ──
       card.addEventListener('keydown', (e) => {
         if (e.key === ' ' || e.key === 'Enter') {
           e.preventDefault();
           selectOption(question.id, opt.id);
         }
       });
+
+      // ── Genuine Swipe & Drag Pointer Gestures on individual answer cards ──
+      attachCardSwipeGestures(card, question.id, opt.id);
 
       quizOptionsGrid.appendChild(card);
     });
@@ -455,6 +472,154 @@ if (typeof document !== 'undefined') {
           <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
         </svg>
       `;
+    }
+  }
+
+  /**
+   * ATTACH SWIPE & DRAG GESTURES TO AN ANSWER CARD
+   * Supports touch and desktop mouse pointer events.
+   * Swiping left or right past threshold:
+   * 1. Selects this specific answer option
+   * 2. Shows direction-sensitive rotation and pop-out
+   * 3. Transitions smoothly to the next question
+   */
+  let isTransitioning = false; // Prevent double submissions
+
+  function attachCardSwipeGestures(card, questionId, optionId) {
+    let startX = 0;
+    let startY = 0;
+    let currentX = 0;
+    let isTracking = false;
+    let isDraggingHorizontally = false;
+    const SWIPE_THRESHOLD = 55; // Pixels needed to commit swipe
+
+    // Touch events (mobile)
+    card.addEventListener('touchstart', (e) => {
+      if (isTransitioning) return;
+      const touch = e.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+      currentX = startX;
+      isTracking = true;
+      isDraggingHorizontally = false;
+    }, { passive: true });
+
+    card.addEventListener('touchmove', (e) => {
+      if (!isTracking || isTransitioning) return;
+      const touch = e.touches[0];
+      const deltaX = touch.clientX - startX;
+      const deltaY = touch.clientY - startY;
+
+      // Detect horizontal intent while allowing natural vertical scroll
+      if (!isDraggingHorizontally) {
+        if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY)) {
+          isDraggingHorizontally = true;
+        } else if (Math.abs(deltaY) > 10) {
+          isTracking = false; // Defer to vertical scroll
+          return;
+        }
+      }
+
+      if (isDraggingHorizontally) {
+        currentX = touch.clientX;
+        const dragDist = currentX - startX;
+        const rotation = (dragDist / 20); // Subtle tilt
+        card.style.transform = `translateX(${dragDist}px) rotate(${rotation}deg)`;
+        card.style.transition = 'none';
+        card.classList.add('is-dragging');
+      }
+    }, { passive: true });
+
+    card.addEventListener('touchend', (e) => {
+      if (!isTracking || isTransitioning) return;
+      isTracking = false;
+
+      if (isDraggingHorizontally) {
+        card.dataset.dragged = 'true';
+        const deltaX = currentX - startX;
+        handleSwipeCommit(card, questionId, optionId, deltaX, SWIPE_THRESHOLD);
+      }
+    });
+
+    // Mouse events (desktop mouse drag)
+    const onMouseMove = (e) => {
+      if (!isTracking || isTransitioning) return;
+      const deltaX = e.clientX - startX;
+      const deltaY = e.clientY - startY;
+
+      if (!isDraggingHorizontally) {
+        if (Math.abs(deltaX) > 8 && Math.abs(deltaX) > Math.abs(deltaY)) {
+          isDraggingHorizontally = true;
+        } else if (Math.abs(deltaY) > 8) {
+          isTracking = false;
+          cleanupMouse();
+          return;
+        }
+      }
+
+      if (isDraggingHorizontally) {
+        currentX = e.clientX;
+        const dragDist = currentX - startX;
+        const rotation = (dragDist / 20);
+        card.style.transform = `translateX(${dragDist}px) rotate(${rotation}deg)`;
+        card.style.transition = 'none';
+        card.classList.add('is-dragging');
+      }
+    };
+
+    const onMouseUp = (e) => {
+      if (!isTracking || isTransitioning) return;
+      isTracking = false;
+      cleanupMouse();
+
+      if (isDraggingHorizontally) {
+        card.dataset.dragged = 'true';
+        const deltaX = currentX - startX;
+        handleSwipeCommit(card, questionId, optionId, deltaX, SWIPE_THRESHOLD);
+      }
+    };
+
+    const cleanupMouse = () => {
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
+    };
+
+    card.addEventListener('mousedown', (e) => {
+      if (isTransitioning || e.button !== 0) return;
+      startX = e.clientX;
+      startY = e.clientY;
+      currentX = startX;
+      isTracking = true;
+      isDraggingHorizontally = false;
+
+      window.addEventListener('mousemove', onMouseMove);
+      window.addEventListener('mouseup', onMouseUp);
+    });
+  }
+
+  /**
+   * COMMIT SWIPE SELECTION & ADVANCE
+   */
+  function handleSwipeCommit(card, questionId, optionId, deltaX, threshold) {
+    if (Math.abs(deltaX) >= threshold) {
+      // Swiped past threshold: trigger selection, visual feedback, and auto-advance
+      isTransitioning = true;
+      selectOption(questionId, optionId);
+
+      const direction = deltaX > 0 ? 'swipe-pop-right' : 'swipe-pop-left';
+      card.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease';
+      card.classList.remove('is-dragging');
+      card.classList.add(direction);
+
+      setTimeout(() => {
+        handleNext();
+        isTransitioning = false;
+      }, 360);
+    } else {
+      // Below threshold: snap back with spring animation
+      card.style.transition = 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)';
+      card.style.transform = '';
+      card.classList.remove('is-dragging');
     }
   }
 
@@ -559,7 +724,7 @@ if (typeof document !== 'undefined') {
       resultChipName.textContent = "Intel® Core™ Ultra Series 3";
       resultCodename.textContent = "Codename: Panther Lake";
       resultPersonality.textContent = "The Power Creator";
-      resultSummary.textContent = "Your stated preferences demand sustained horsepower, heavy creative or gaming capabilities, and maximum local AI headroom.";
+      resultSummary.textContent = "Your answers highlight a high-ambition workflow centered on intense creation, competitive gameplay, or deep local AI experimentation. Intel® Core™ Ultra Series 3 gives you dedicated compute tiles and robust graphics headroom so technology accelerates your boldest ideas without getting in the way.";
 
       if (celebrateBubble) celebrateBubble.innerHTML = `<span>"Power match found: Core™ Ultra!"</span>`;
       if (compatibilityPct) compatibilityPct.textContent = `${ultraPoints} Pts`;
@@ -568,7 +733,7 @@ if (typeof document !== 'undefined') {
       scoreCardUltra.classList.add('winner');
 
       altTitle.textContent = "When might Intel® Core™ Series 3 make sense for you?";
-      altDesc.textContent = "If you ever find your usage dialing back to lighter day-to-day documents and study, or if battery longevity and price sensitivity become paramount, Core Series 3 offers modern 18A architecture without paying for unneeded headroom.";
+      altDesc.textContent = "If your daily routine shifts predominantly to coursework, office productivity, and extended unplugged battery mobility, Core™ Series 3 provides modern Intel 18A architecture and smart AI essentials with optimal efficiency and value.";
 
     } else if (recommendation === 'core') {
       resultBadge.textContent = "Definitive Match";
@@ -576,7 +741,7 @@ if (typeof document !== 'undefined') {
       resultChipName.textContent = "Intel® Core™ Series 3";
       resultCodename.textContent = "Codename: Wildcat Lake";
       resultPersonality.textContent = "The Everyday Achiever";
-      resultSummary.textContent = "Your workflow is driven by everyday productivity, coursework, smooth browsing, and right-sized AI assistance at great value.";
+      resultSummary.textContent = "Your answers show a balanced, focused workflow where all-day battery reliability, responsive multitasking, and smart everyday AI assistance are your real priorities. Intel® Core™ Series 3 delivers cutting-edge Intel 18A process technology engineered to keep your ideas flowing effortlessly at superb value.";
 
       if (celebrateBubble) celebrateBubble.innerHTML = `<span>"Smart match found: Core™ Series 3!"</span>`;
       if (compatibilityPct) compatibilityPct.textContent = `${corePoints} Pts`;
@@ -585,7 +750,7 @@ if (typeof document !== 'undefined') {
       scoreCardCore.classList.add('winner');
 
       altTitle.textContent = "When might Intel® Core™ Ultra Series 3 make sense for you?";
-      altDesc.textContent = "If your aspirations shift into heavy 4K video editing, local generative AI models, or high-tier gaming, stepping up to Core Ultra Series 3 will give you the dedicated compute and graphics headroom required.";
+      altDesc.textContent = "If your computing ambitions expand into heavy multi-track 4K video rendering, local generative AI LLM execution, or high-frame-rate gaming, stepping up to Core™ Ultra Series 3 provides the extra dedicated performance cores and GPU headroom.";
 
     } else {
       // True Tie Branch
@@ -594,7 +759,7 @@ if (typeof document !== 'undefined') {
       resultChipName.textContent = "Equal Match: Core™ Ultra & Core™ Series 3";
       resultCodename.textContent = "Panther Lake & Wildcat Lake (Intel 18A)";
       resultPersonality.textContent = "Versatile Explorer";
-      resultSummary.textContent = "Your answers scored identically across both processor families! Both share Intel 18A manufacturing and represent outstanding fits depending on whether you value top-tier headroom or smart everyday value.";
+      resultSummary.textContent = "Your stated preferences strike a harmonious balance between everyday mobility and ambitious creative capability. Because both processor families share Intel's revolutionary 18A ribbonFET technology, both are outstanding choices tailored to how your day evolves.";
 
       if (celebrateBubble) celebrateBubble.innerHTML = `<span>"A perfect balance between both!"</span>`;
       if (compatibilityPct) compatibilityPct.textContent = `5 - 5`;
@@ -605,7 +770,7 @@ if (typeof document !== 'undefined') {
       scoreCardCore.classList.add('winner');
 
       altTitle.textContent = "How to break the tie?";
-      altDesc.textContent = "Prioritize Core™ Ultra Series 3 if you expect your creative and gaming ambitions to grow, or prioritize Core™ Series 3 if price accessibility and everyday efficiency are your deciding criteria.";
+      altDesc.textContent = "Prioritize Core™ Ultra Series 3 if you expect your creative and gaming ambitions to grow, or prioritize Core™ Series 3 if price accessibility, cool quiet running, and everyday efficiency are your deciding criteria.";
     }
 
     // Switch view
